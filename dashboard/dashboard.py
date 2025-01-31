@@ -32,7 +32,7 @@ with col1:
     # Cache the data loading and preprocessing step
     # @st.cache_data(show_spinner=False)
     def load_data():
-        df = notebook.orders_region_df2.loc[:, ('customer_lat', 'customer_lng', 'price')]  # Load only necessary columns
+        df = notebook.orders_region_df2[['customer_lat', 'customer_lng', 'price']]  # Load only necessary columns
 
         # Optimize data types
         df['customer_lat'] = df['customer_lat'].astype('float32')
