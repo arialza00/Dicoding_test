@@ -1,4 +1,4 @@
 import setup
-from dashboard import dashboard
+import dashboard.dashboard as main
 
-dashboard
+main
