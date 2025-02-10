@@ -1,13 +1,13 @@
 import sys
 import os
+import nbformat
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-import notebook
 
 # Add the Dicoding folder to the system path
 dicoding_dir = os.path.abspath('Dicoding')
 sys.path.insert(0, dicoding_dir)
 
+import notebook
 # Import the module from the dashboard folder
 notebook = notebook
 
@@ -19,7 +19,6 @@ import pydeck as pdk
 import pandas as pd
 from diskcache import Cache
 from babel.numbers import format_currency
-
 
 # Initialize DiskCache
 cache = Cache(directory='cache')
@@ -33,7 +32,7 @@ with col1:
     # Cache the data loading and preprocessing step
     # @st.cache_data(show_spinner=False)
     def load_data():
-        df = notebook.orders_region_df2[['customer_lat', 'customer_lng', 'price']]  # Load only necessary columns
+        df = notebook.orders_region_df2.loc[:, ('customer_lat', 'customer_lng', 'price')]  # Load only necessary columns
 
         # Optimize data types
         df['customer_lat'] = df['customer_lat'].astype('float32')
